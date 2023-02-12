@@ -40,11 +40,11 @@ RUN npm i
 
 RUN mkdir -p /home/app/function/src
 COPY --chown=app:app function/ ./src/
+COPY --chown=app:app function/common ./common
 # COPY function files and folders
 RUN ./node_modules/.bin/tsc --build
 
-RUN mv src/common ./common
-# Run any tests that may be available
+# # Run any tests that may be available
 RUN npm test
 
 # Set correct permissions to use non root user
